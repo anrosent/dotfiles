@@ -1,0 +1,15 @@
+[user]
+	email = Anson_Rosenthal@brown.edu
+	name = anrosent
+[core]
+	editor = vim
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+[push]
+	default = simple
