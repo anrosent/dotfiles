@@ -93,13 +93,14 @@ alias sl='ls -CF'
 alias lsd='ls -d */'
 alias lsl='ls -CF'
 alias sls='ls -CF'
+alias c='cd'
 
+alias v='vim'
 alias r="fc -s"
 alias fn="find . -name"
 alias u="cd .."
-function rg() {
-    grep -R $@ .
-}
+alias rg="rgrep"
+alias brown-vpn="sudo openvpn ~/vpn/brown/browncs-gateall.ovpn"
 
 # git aliases
 alias gs='git status'
@@ -108,7 +109,7 @@ alias fa='mr *Fall'
 
 alias fblock="sudo /home/anrosent/bin/block facebook"
 alias funblock="sudo /home/anrosent/bin/unblock facebook"
-alias venv="virtualenv"
+alias venv="virtualenv -p /usr/bin/python3 venv"
 alias venva="source venv/bin/activate"
 alias clas="view schedule"
 alias music="cd ~/media/Music/myTunes"
@@ -175,22 +176,26 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=$PATH:~/lib/swift-0.94.1/bin
 
-#For CS32
-export JAVA_HOME="/pro/java/linux/jdk1.8.0_05"
-export PATH="$JAVA_HOME/bin:$PATH"
-export GOPATH="~/src/go"
-export PATH="$GOPATH/bin:$PATH"
+if [[ -z $TMUX ]];
+then
+    export PATH=$PATH:~/lib/swift-0.94.1/bin
 
-#For matrix TA
-export PATH=$PATH":/usr/local/google_appengine"
-export PATH=$PATH":/home/anrosent/docs/matrix/bin"
+    #For CS32
+    export JAVA_HOME="/pro/java/linux/jdk1.8.0_05"
+    export PATH="$PATH:$JAVA_HOME/bin"
 
-export PATH=$PATH:/usr/local/AWS-ElasticBeanstalk-CLI-2.6.3/eb/linux/python2.7/
+    #For matrix TA
+    export PATH=$PATH":/usr/local/google_appengine"
+    export PATH=$PATH":/home/anrosent/docs/matrix/bin"
 
-export SOURCERE_SUPPORT_PATH="$HOME/src/sourcere/reterm/support"
-export PATH=$PATH:$SOURCERE_SUPPORT_PATH/scripts
+    export PATH=$PATH:/usr/local/AWS-ElasticBeanstalk-CLI-2.6.3/eb/linux/python2.7/
+
+    export SOURCERE_SUPPORT_PATH="$HOME/src/sourcere/reterm/support"
+    export PATH=$PATH:$SOURCERE_SUPPORT_PATH/scripts
+fi
 
 #Brown course navigation
+
 export BROWN_ROOT="$HOME/docs/brown"
+[[ -s "/home/anrosent/.gvm/scripts/gvm" ]] && source "/home/anrosent/.gvm/scripts/gvm"

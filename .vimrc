@@ -5,6 +5,7 @@ filetype plugin indent on
 :set tabstop=4 shiftwidth=4 expandtab autoindent
 :set cindent
 :set laststatus=2 statusline+=%f
+:set noesckeys
 
 :command WQ wq
 :command Wq wq
@@ -20,3 +21,4 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
+nnoremap Q <nop>
