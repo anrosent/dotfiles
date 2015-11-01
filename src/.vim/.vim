@@ -1,0 +1,1 @@
+/home/anrosent/src/dotfiles/src/.vim

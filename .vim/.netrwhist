@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/anrosent/docs/brown/s7/graphical_models/paper/plugin/keypress/extension/scripts'
-let g:netrw_dirhist_2='/home/anrosent/docs/brown/s7/graphical_models/paper/plugin/keypress/.git'
-let g:netrw_dirhist_3='/home/anrosent/docs/brown/s7/networks/proj/net/application/tcp_demo/src'
-let g:netrw_dirhist_4='/home/anrosent/docs/brown/s7/networks/proj/net/transport/tcp/src/connection'
-let g:netrw_dirhist_5='/home/anrosent/src/python/vnet/src/nodes'
-let g:netrw_dirhist_6='/home/anrosent/src/go/src/cs.brown/anrosent/chat/client'
-let g:netrw_dirhist_7='/home/anrosent/src/clones/wifiphisher/wifiphisher'
