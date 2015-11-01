@@ -10,7 +10,6 @@ alias sls='ls -CF'
 alias c='cd'
 
 alias v='vim'
-alias r="fc -s"
 alias fn="find . -name"
 alias u="cd .."
 alias rg="rgrep"
@@ -20,8 +19,6 @@ alias gs='git status'
 alias ga='git add'
 alias grot='cd `git rev-parse --show-toplevel`'
 
-alias fblock="sudo /home/anrosent/bin/block facebook"
-alias funblock="sudo /home/anrosent/bin/unblock facebook"
 alias venv="virtualenv -p /usr/bin/python3 .venv"
 alias venva="source .venv/bin/activate"
 alias music="cd ~/media/Music/myTunes"
