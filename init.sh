@@ -15,6 +15,7 @@ do
     # Make symlinks into $HOME
     SRC=$(readlink -f `pwd`/$f)
     DST=~/$(basename $f)
+    unlink $DST
     ln -s $SRC $DST
     echo "Symlinked $DST -> $SRC"
 
@@ -30,19 +31,21 @@ do
 done
 
 # Make container for bulk dependencies
-if [ -d deps ];
+if [ ! -d deps ];
 then
     mkdir deps
 fi
 
 while read line
 do
-    DST=`echo $line | cut -d ' ' -f1`
+    NAME=`echo $line | cut -d ' ' -f1`
+    DST=~/$NAME
     URL=`echo $line | cut -d ' ' -f2`
-    if [ ! -a ~/$DST ];
+    if [ ! -L $DST ];
     then
-        git clone --recursive $URL "deps/$DST"
-        SRC=$(readlink -f "deps/$DST")
+        echo "file $DST does not exist"
+        git clone --recursive $URL "deps/$NAME"
+        SRC=$(readlink -f "deps/$NAME")
         ln -s $SRC ~/$DST
     else
         echo "Dependency $line already satisfied"
