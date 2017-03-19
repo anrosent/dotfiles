@@ -1,7 +1,6 @@
 "
 " Lots of great tips from http://dougblack.io/words/a-good-vimrc.html
 "
-
 " Load plugins
 execute pathogen#infect()
 
@@ -61,6 +60,9 @@ inoremap <ESC> <NOP>
 " Toggle Gundo
 nnoremap <leader>u :GundoToggle<CR>
 
+" Indent file
+map ,f gg=G''k<CR>
+
 :command WQ wq
 :command Wq wq
 :command W w
@@ -78,8 +80,32 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
+nmap <C-I> <C-W>
+
+" Go to last file
+nmap <C-l> :e#<CR>
+
+" Go to first file
+nnoremap <C-K> :e#1<CR>
+
+" Go to file
+nmap F gf<CR> 
+
 " Disable the annoying Ex mode
 nnoremap Q <nop>
+
+" Toggle numbers
+nmap ,nn :set nonumber<CR>
+nmap ,mm :set number<CR>
+
+" Toggle paste
+nmap ,ss :set paste
+nmap ,ns :set nopaste
+
+" Quick saving
+nmap ,x :wq<CR>
+nmap ,w :w<CR>
+nmap ,q :q<CR>
 
 " Backups so .swp files don't go in cwd
 set backup      " enable backups
@@ -87,7 +113,72 @@ set backupdir=./.vim_backups,~/.vim_backups,.  " list of backup dirs to scan
 set directory=./.vim_backups,~/.vim_backups,.  " not sure
 set writebackup
 
-
+" Fuzzy file opening
+let g:ctrlp_map = '<c-g>'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Set python3 interpreter for checker
-let g:syntastic_python_python_exec = 'python3'
+" let g:syntastic_python_python_exec = 'python3'
+
+" Make format key run AutoPep8 for python files
+autocmd Filetype python nmap ,f :Autopep8<CR>
+
+" Disable annoying autopep8 popup diff window
+let g:autopep8_disable_show_diff=1
+
+" Clojure dev stuff
+
+" Reload current file and run its tests
+nmap ,t :w<CR>:Require<CR>:RunTests<CR>   
+autocmd FileType javascript.jsx nmap ,t :Dispatch npm test<CR>
+
+" Reload all require'd files and run current file tests
+nmap ,T :w<CR>:Require!<CR>:RunTests<CR>
+
+" Reload current
+nmap ,r :Require<CR>
+
+" Reload all require'd files
+nmap ,R :Require!<CR>
+
+" Display source of current symbol
+nmap ,s [d
+
+" Shortcut to display source of provided symbol
+nmap ,S :Source
+
+" Display doc for current symbol
+nmap ,d K
+
+" Shortcut to display doc of provided symbol
+nmap ,D :FindDoc
+
+" Jump to source of current symbol
+nmap <C-J> [<C-D>
+autocmd FileType javascript.jsx nmap <C-J> <C-]>
+
+" Open a repl
+nmap <C-P> cqp
+
+" Engage omni-complete
+inoremap <C-C> <C-X><C-O>
+
+" React dev stuff
+let g:jsx_ext_required = 0
+imap ,cl console.log(format(
+
+" Git stuff with gitgutter
+nmap ,g :set g:gitgutter_diff_base = 
+nmap ,ggd :GitGutterDisable<CR>
+
+" Shows all the TODOs and NOTEs and such
+nmap ,tl :TaskList<CR>
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+let g:paredit_mode = 0
+
+"

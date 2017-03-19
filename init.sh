@@ -3,7 +3,7 @@
 if [ "`uname`" == 'Darwin' ];
 then
     echo "aliasing"
-    READLINK='greadlink'
+    READLINK='readlink'
 else
     READLINK='readlink'
 fi
@@ -22,7 +22,7 @@ for f in $RESOURCE_DIR/*;
 do
 
     # Make symlinks into $HOME
-    SRC=$($READLINK -f `pwd`/$f)
+    SRC=`pwd`/$f
     DST=~/$(basename $f)
     unlink $DST
     ln -s $SRC $DST
@@ -54,8 +54,8 @@ do
     then
         echo "file $DST does not exist"
         git clone --recursive $URL "deps/$NAME"
-        SRC=$($READLINK -f "deps/$NAME")
-        ln -s $SRC ~/$DST
+        SRC="`pwd`/deps/$NAME"
+        ln -s $SRC $DST
     else
         echo "Dependency $line already satisfied"
     fi

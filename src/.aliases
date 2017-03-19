@@ -18,6 +18,9 @@ alias rg="rgrep"
 alias gs='git status'
 alias ga='git add'
 alias grot='cd `git rev-parse --show-toplevel`'
+alias gd='git diff'
+alias gpo='git push origin HEAD'
+alias gcb='git checkout -b'
 
 alias venv="virtualenv -p /usr/bin/python3 .venv"
 alias venva="source .venv/bin/activate"
@@ -29,7 +32,6 @@ alias cb='cargo build'
 # convenient project access
 alias scratch=". scratch"
 
-alias pdf='quiet evince'
 alias gfind='. _gfind'
 
 # convenient terminal styling
@@ -38,11 +40,5 @@ alias white_back='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/backg
 alias white_fore='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#FFFFFFFFFFFF"'
 alias green_fore='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#0000FFFF0000"'
 
-# convenient program starting
-alias rustup='sudo ~/bin/rustup'
-alias chrome='quiet google-chrome'
-alias spot='quiet spotify'
-alias skype='quiet skype'
-
-alias lolenable='lolcommits --enable --fork'
-
+alias tg='cd ~/src/tg'
+alias gw='./gradlew'
