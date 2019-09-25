@@ -4,6 +4,9 @@
 " Load plugins
 execute pathogen#infect()
 
+" make . backspace, hopefully this helps my wrist
+noremap . hx
+
 " Turn on syntax coloring
 syntax on
 
@@ -54,6 +57,8 @@ nnoremap gV `[v`]
 
 " Map escape to jk. Hope you don't type it
 inoremap jk <ESC>
+nnoremap q <ESC>
+
 " Training
 inoremap <ESC> <NOP>
 
@@ -61,7 +66,8 @@ inoremap <ESC> <NOP>
 nnoremap <leader>u :GundoToggle<CR>
 
 " Indent file
-map ,f gg=G''k<CR>
+"map ,f gg=G''k<CR>
+noremap ,f :Autoformat<CR>
 
 :command WQ wq
 :command Wq wq
@@ -103,9 +109,9 @@ nmap ,ss :set paste
 nmap ,ns :set nopaste
 
 " Quick saving
-nmap ,x :wq<CR>
-nmap ,w :w<CR>
-nmap ,q :q<CR>
+nmap fx :wq<CR>
+nmap fw :w<CR>
+nmap fq :q<CR>
 
 " Backups so .swp files don't go in cwd
 set backup      " enable backups
@@ -121,7 +127,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 " let g:syntastic_python_python_exec = 'python3'
 
 " Make format key run AutoPep8 for python files
-autocmd Filetype python nmap ,f :Autopep8<CR>
+"autocmd Filetype python nmap ,f :Autopep8<CR>
 
 " Disable annoying autopep8 popup diff window
 let g:autopep8_disable_show_diff=1
@@ -165,7 +171,7 @@ inoremap <C-C> <C-X><C-O>
 
 " React dev stuff
 let g:jsx_ext_required = 0
-imap ,cl console.log(format(
+imap ,cl console.log(
 
 " Git stuff with gitgutter
 nmap ,g :set g:gitgutter_diff_base = 
@@ -181,4 +187,15 @@ au Syntax * RainbowParenthesesLoadBraces
 
 let g:paredit_mode = 0
 
-"
+let vim_markdown_preview_github=1
+
+"au FileType sql setl formatprg=/usr/local/bin/pg_format\ -
+let g:formatdef_pgformat="'/usr/local/bin/pg_format -'"
+let g:formatters_sql = ['pgformat']
+
+"reloads current file from disk
+nmap ,rl :e!<CR>
+
+
+autocmd FileType javascript nmap ,f :Prettier<CR>
+autocmd FileType vue nmap ,f :Prettier<CR>
